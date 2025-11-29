@@ -1,1 +1,730 @@
-if you see this, then everything is operational
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharath S</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #DAC5A8;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+    a {
+    color: #877A69;
+    text-decoration: none;
+    }
+
+    a:hover {
+    color: #DAC5A8;
+    }
+        /* Animated grain texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle, rgba(218, 197, 168, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grain 8s steps(10) infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            20% { transform: translate(-15%, 5%); }
+            30% { transform: translate(7%, -25%); }
+            40% { transform: translate(-5%, 25%); }
+            50% { transform: translate(-15%, 10%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 15%); }
+            80% { transform: translate(3%, 35%); }
+            90% { transform: translate(-10%, 10%); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero section - asymmetric split */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .hero-container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        /* Left side - Name */
+        .hero-left {
+            position: relative;
+        }
+
+        .hero-left h1 {
+            font-size: 8rem;
+            font-weight: 900;
+            letter-spacing: -5px;
+            line-height: 0.85;
+            margin-bottom: 2rem;
+            color: #DAC5A8;
+        }
+
+        .hero-left h1 span {
+            display: block;
+        }
+
+        .hero-left h1 span:first-child {
+            background: linear-gradient(135deg, #DAC5A8 0%, #FFB5C5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            opacity: 0.3;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+
+        .hero-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            opacity: 0.4;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* Right side - Visual element */
+        .hero-right {
+            position: relative;
+            height: 600px;
+        }
+
+        .visual-box {
+            position: absolute;
+            border: 1px solid rgba(218, 197, 168, 0.15);
+            transition: all 0.6s ease;
+        }
+
+        .visual-box:nth-child(1) {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: transparent;
+        }
+
+        .visual-box:nth-child(2) {
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            background: transparent;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .visual-box:nth-child(3) {
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+            background: rgba(218, 197, 168, 0.03);
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(10px, -10px) rotate(2deg); }
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: #DAC5A8;
+            color: #000;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            z-index: 10;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #000;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        .center-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: #1a1a1a;
+            z-index: 5;
+            overflow: hidden;
+        }
+
+        .center-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Navigation bar */
+        .nav-bar {
+            position: fixed;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(218, 197, 168, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(218, 197, 168, 0.15);
+            padding: 1.5rem 3rem;
+            display: flex;
+            gap: 3rem;
+            z-index: 100;
+        }
+
+        .nav-bar a {
+            color: #DAC5A8;
+            text-decoration: none;
+            font-size: 0.85rem;
+            opacity: 0.5;
+            transition: all 0.3s;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-bar a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #DAC5A8;
+            transition: width 0.3s;
+        }
+
+        .nav-bar a:hover {
+            opacity: 1;
+        }
+
+        .nav-bar a:hover::after {
+            width: 100%;
+        }
+
+        /* Projects section - grid style */
+        .projects-section {
+            margin: 6rem 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-header::before {
+            content: '';
+            width: 60px;
+            height: 2px;
+            background: #DAC5A8;
+            opacity: 0.3;
+        }
+
+        .section-header h2 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            opacity: 0.3;
+            font-weight: 700;
+        }
+
+        .projects-bento {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 1px;
+            background: rgba(218, 197, 168, 0.1);
+            border: 1px solid rgba(218, 197, 168, 0.1);
+        }
+
+        .project-cell {
+            background: #0a0a0a;
+            padding: 3rem;
+            grid-column: span 4;
+            position: relative;
+            transition: background 0.4s ease;
+        }
+
+        .project-cell::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, rgba(218, 197, 168, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .project-cell:hover::before {
+            opacity: 1;
+        }
+
+        .project-cell:hover {
+            background: rgba(218, 197, 168, 0.02);
+        }
+
+        .project-number {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 5rem;
+            font-weight: 900;
+            opacity: 0.03;
+            line-height: 1;
+        }
+
+        .project-cell h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .project-cell p {
+            font-size: 0.95rem;
+            opacity: 0.5;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: transparent;
+            border: 1px solid rgba(218, 197, 168, 0.2);
+            padding: 0.4rem 1rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* About section - split layout */
+        .about-section {
+            margin: 8rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: rgba(218, 197, 168, 0.1);
+            border: 1px solid rgba(218, 197, 168, 0.1);
+        }
+
+        .about-cell {
+            background: #0a0a0a;
+            padding: 4rem;
+        }
+
+        .about-cell h2 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            opacity: 0.3;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .about-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            opacity: 0.6;
+            font-weight: 300;
+        }
+
+        .details-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .detail-item {
+            padding-left: 2rem;
+            border-left: 2px solid rgba(218, 197, 168, 0.2);
+            transition: border-color 0.3s;
+        }
+
+        .detail-item:hover {
+            border-color: rgba(218, 197, 168, 0.6);
+        }
+
+        .detail-item h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0.4;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .detail-item p {
+            font-size: 1rem;
+            opacity: 0.7;
+            font-weight: 400;
+        }
+
+        /* Contact section - bold style */
+        .contact-section {
+            margin: 8rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: rgba(218, 197, 168, 0.1);
+            border: 1px solid rgba(218, 197, 168, 0.1);
+        }
+
+        .contact-cell {
+            background: #0a0a0a;
+            padding: 4rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .contact-cell:hover {
+            background: #DAC5A8;
+        }
+
+        .contact-cell a {
+            color: #DAC5A8;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+        }
+
+        .contact-cell:hover a {
+            color: #000;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0;
+            border-top: 1px solid rgba(218, 197, 168, 0.1);
+            text-align: center;
+            opacity: 0.3;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-left h1 {
+                font-size: 6rem;
+            }
+
+            .hero-right {
+                height: 500px;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .container {
+                padding: 0 2rem;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-left h1 {
+                font-size: 4.5rem;
+            }
+
+            .hero-right {
+                height: 400px;
+            }
+
+            .nav-bar {
+                bottom: 2rem;
+                padding: 1rem 2rem;
+                gap: 2rem;
+            }
+
+            .projects-bento {
+                grid-template-columns: 1fr;
+            }
+
+            .project-cell {
+                grid-column: span 1;
+            }
+
+            .about-section {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero-section {
+                margin: 1.5rem 0;
+                min-height: 80vh;
+            }
+
+            .hero-left h1 {
+                font-size: 3rem;
+                letter-spacing: -3px;
+            }
+
+            .hero-right {
+                height: 300px;
+            }
+
+            .status-badge {
+                top: 1rem;
+                right: 1rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.65rem;
+            }
+
+            .center-image {
+                width: 250px;
+                height: 250px;
+            }
+
+            .nav-bar {
+                bottom: 1.5rem;
+                padding: 1rem 1.5rem;
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-bar a {
+                font-size: 0.75rem;
+            }
+
+            .project-cell,
+            .about-cell,
+            .contact-cell {
+                padding: 2rem;
+            }
+
+            .contact-cell a {
+                font-size: 1.1rem;
+            }
+
+            .about-text {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-container">
+                <div class="hero-left">
+                    <h1>
+                        <span>hello!</span>
+                        <span>I'm</span>
+                        <span>Bharath.</span>
+                    </h1>
+                    <p class="tagline">Self-taught Graphic Designer & Tech Enthusiast.</p>
+                    <div class="hero-info">
+                    </div>
+                </div>
+
+                <div class="hero-right">
+                    <div class="visual-box"></div>
+                    <div class="visual-box"></div>
+                    <div class="visual-box"></div>
+                    <div class="center-image">
+                        <!-- Add your image here -->
+                    <img src="main.jpg" alt="Profile">
+                    </div>
+                    <div class="status-badge">
+                        <span class="pulse-dot"></span>
+                        <span>Dreaming</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section
+        <section class="projects-section" id="work">
+            <div class="section-header">
+                <h2>Selected Work</h2>
+            </div>
+
+           <div class="projects-bento">
+                <div class="project-cell">
+                    <span class="project-number">01</span>
+                    <h3>Placeholder Project 1</h3>
+                    <p>Lorem Ipsum</p>
+                    <div class="project-tags">
+                        <span class="tag">2024</span>
+                        <span class="tag">Product Design</span>
+                        <span class="tag">Mobile</span>
+                    </div>
+                </div>
+
+                <div class="project-cell">
+                    <span class="project-number">02</span>
+                    <h3>Placeholder Project 2</h3>
+                    <p>Lorem Ipsum</p>
+                    <div class="project-tags">
+                        <span class="tag">2024</span>
+                        <span class="tag">Web Design</span>
+                        <span class="tag">Development</span>
+                    </div>
+                </div>
+
+                <div class="project-cell">
+                    <span class="project-number">03</span>
+                    <h3>Placeholder Project 3</h3>
+                    <p>Lorem Ipsum</p>
+                    <div class="project-tags">
+                        <span class="tag">2023</span>
+                        <span class="tag">Development</span>
+                        <span class="tag">React</span>
+                    </div>
+                </div>
+
+                <div class="project-cell">
+                    <span class="project-number">04</span>
+                    <h3>Placeholder Project 4</h3>
+                    <p>Lorem Ipsum</p>
+                    <div class="project-tags">
+                        <span class="tag">2023</span>
+                        <span class="tag">Branding</span>
+                        <span class="tag">Print</span>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+
+        <section class="about-section" id="about">
+            <div class="about-cell">
+                <h2>About</h2>
+                <p class="about-text">I'm a Self-taught Graphic Designer & Tech Enthusiast with more than 4 years of Photoshop Experience. I also own a tech channel on YouTube where I occasionally post videos.</p>
+            </div>
+
+            <div class="about-cell">
+                <div class="details-list">
+                    <div class="detail-item">
+                        <h4>Location</h4>
+                        <p>Thiruvananthapuram, Kerala</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>E-mail</h4>
+                        <a href="mailto:contact@bharathsyamanthak.com">contact@bharathsyamanthak.com</a>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Expertise</h4>
+                        <p>Posters, Thumbnails and other graphics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="section-header">
+                <h2>Get in Touch</h2>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-cell">
+                    <a href="https://youtube.com/@bharathsyamanthak">Personal YouTube</a>
+                </div>
+                <div class="contact-cell">
+                    <a href="https://youtube.com/techpointch">Tech YouTube</a>
+                </div>
+                <div class="contact-cell">
+                    <a href="https://instagram.com/srcleak">Instagram</a>
+                </div>
+                <div class="contact-cell">
+                    <a href="mailto:contact@bharathsyamanthak.com">Email</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            © 2025 Bharath Syamanthak
+        </footer>
+    </div>
+</body>
+</html>
