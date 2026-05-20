@@ -1,733 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bharath S</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bharath S</title>
+  <link rel="icon" type="image/x-icon" href="smirk.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            background: #0a0a0a;
-            color: #DAC5A8;
-            font-family: 'Space Grotesk', sans-serif;
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
+    body {
+      background: #111;
+      color: #888;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 300;
+      font-size: 18px;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      max-width: 430px;
+      width: 100%;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 400;
+      color: #eee;
+      margin-bottom: 0.4rem;
+    }
+
+    .role { margin-bottom: 1.8rem; }
+
+    p {
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+    }
+
+    .links {
+      display: flex;
+      gap: 1.4rem;
+      margin-bottom: 2.4rem;
+      flex-wrap: wrap;
+    }
+
     a {
-    color: #877A69;
-    text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.2s;
     }
 
-    a:hover {
-    color: #DAC5A8;
+    a svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
     }
-        /* Animated grain texture */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle, rgba(218, 197, 168, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: grain 8s steps(10) infinite;
-            pointer-events: none;
-            z-index: 1;
-        }
 
-        @keyframes grain {
-            0%, 100% { transform: translate(0, 0); }
-            10% { transform: translate(-5%, -10%); }
-            20% { transform: translate(-15%, 5%); }
-            30% { transform: translate(7%, -25%); }
-            40% { transform: translate(-5%, 25%); }
-            50% { transform: translate(-15%, 10%); }
-            60% { transform: translate(15%, 0%); }
-            70% { transform: translate(0%, 15%); }
-            80% { transform: translate(3%, 35%); }
-            90% { transform: translate(-10%, 10%); }
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 4rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Hero section - asymmetric split */
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            margin: 3rem 0;
-            position: relative;
-        }
-
-        .hero-container {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        /* Left side - Name */
-        .hero-left {
-            position: relative;
-        }
-
-        .hero-left h1 {
-            font-size: 8rem;
-            font-weight: 900;
-            letter-spacing: -5px;
-            line-height: 0.85;
-            margin-bottom: 2rem;
-            color: #DAC5A8;
-        }
-
-        .hero-left h1 span {
-            display: block;
-        }
-
-        .hero-left h1 span:first-child {
-            background: linear-gradient(135deg, #DAC5A8 0%, #FFB5C5 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .tagline {
-            font-size: 0.9rem;
-            opacity: 0.3;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 3rem;
-        }
-
-        .hero-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            opacity: 0.4;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-
-        /* Right side - Visual element */
-        .hero-right {
-            position: relative;
-            height: 600px;
-        }
-
-        .visual-box {
-            position: absolute;
-            border: 1px solid rgba(218, 197, 168, 0.15);
-            transition: all 0.6s ease;
-        }
-
-        .visual-box:nth-child(1) {
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: transparent;
-        }
-
-        .visual-box:nth-child(2) {
-            width: 80%;
-            height: 80%;
-            top: 10%;
-            left: 10%;
-            background: transparent;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .visual-box:nth-child(3) {
-            width: 60%;
-            height: 60%;
-            top: 20%;
-            left: 20%;
-            background: rgba(218, 197, 168, 0.03);
-            animation: float 8s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(10px, -10px) rotate(2deg); }
-        }
-
-        .status-badge {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: #DAC5A8;
-            color: #000;
-            padding: 0.75rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.75rem;
-            z-index: 10;
-        }
-
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background: #000;
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.3); }
-        }
-
-        .center-image {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            background: #1a1a1a;
-            z-index: 5;
-            overflow: hidden;
-        }
-
-        .center-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Navigation bar */
-        .nav-bar {
-            position: fixed;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(218, 197, 168, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(218, 197, 168, 0.15);
-            padding: 1.5rem 3rem;
-            display: flex;
-            gap: 3rem;
-            z-index: 100;
-        }
-
-        .nav-bar a {
-            color: #DAC5A8;
-            text-decoration: none;
-            font-size: 0.85rem;
-            opacity: 0.5;
-            transition: all 0.3s;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-            position: relative;
-        }
-
-        .nav-bar a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #DAC5A8;
-            transition: width 0.3s;
-        }
-
-        .nav-bar a:hover {
-            opacity: 1;
-        }
-
-        .nav-bar a:hover::after {
-            width: 100%;
-        }
-
-        /* Projects section - grid style */
-        .projects-section {
-            margin: 6rem 0;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .section-header::before {
-            content: '';
-            width: 60px;
-            height: 2px;
-            background: #DAC5A8;
-            opacity: 0.3;
-        }
-
-        .section-header h2 {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            opacity: 0.3;
-            font-weight: 700;
-        }
-
-        .projects-bento {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            gap: 1px;
-            background: rgba(218, 197, 168, 0.1);
-            border: 1px solid rgba(218, 197, 168, 0.1);
-        }
-
-        .project-cell {
-            background: #0a0a0a;
-            padding: 3rem;
-            grid-column: span 4;
-            position: relative;
-            transition: background 0.4s ease;
-        }
-
-        .project-cell::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, transparent, rgba(218, 197, 168, 0.05));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-
-        .project-cell:hover::before {
-            opacity: 1;
-        }
-
-        .project-cell:hover {
-            background: rgba(218, 197, 168, 0.02);
-        }
-
-        .project-number {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 5rem;
-            font-weight: 900;
-            opacity: 0.03;
-            line-height: 1;
-        }
-
-        .project-cell h3 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
-        }
-
-        .project-cell p {
-            font-size: 0.95rem;
-            opacity: 0.5;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-
-        .project-tags {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background: transparent;
-            border: 1px solid rgba(218, 197, 168, 0.2);
-            padding: 0.4rem 1rem;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-
-        /* About section - split layout */
-        .about-section {
-            margin: 8rem 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1px;
-            background: rgba(218, 197, 168, 0.1);
-            border: 1px solid rgba(218, 197, 168, 0.1);
-        }
-
-        .about-cell {
-            background: #0a0a0a;
-            padding: 4rem;
-        }
-
-        .about-cell h2 {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            opacity: 0.3;
-            margin-bottom: 2rem;
-            font-weight: 700;
-        }
-
-        .about-text {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            opacity: 0.6;
-            font-weight: 300;
-        }
-
-        .details-list {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-
-        .detail-item {
-            padding-left: 2rem;
-            border-left: 2px solid rgba(218, 197, 168, 0.2);
-            transition: border-color 0.3s;
-        }
-
-        .detail-item:hover {
-            border-color: rgba(218, 197, 168, 0.6);
-        }
-
-        .detail-item h4 {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            opacity: 0.4;
-            margin-bottom: 0.75rem;
-            font-weight: 700;
-        }
-
-        .detail-item p {
-            font-size: 1rem;
-            opacity: 0.7;
-            font-weight: 400;
-        }
-
-        /* Contact section - bold style */
-        .contact-section {
-            margin: 8rem 0;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1px;
-            background: rgba(218, 197, 168, 0.1);
-            border: 1px solid rgba(218, 197, 168, 0.1);
-        }
-
-        .contact-cell {
-            background: #0a0a0a;
-            padding: 4rem;
-            text-align: center;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .contact-cell:hover {
-            background: #DAC5A8;
-        }
-
-        .contact-cell a {
-            color: #DAC5A8;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: color 0.3s;
-        }
-
-        .contact-cell:hover a {
-            color: #000;
-        }
-
-        /* Footer */
-        footer {
-            padding: 4rem 0;
-            border-top: 1px solid rgba(218, 197, 168, 0.1);
-            text-align: center;
-            opacity: 0.3;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .hero-left h1 {
-                font-size: 6rem;
-            }
-
-            .hero-right {
-                height: 500px;
-            }
-        }
-
-        @media (max-width: 968px) {
-            .container {
-                padding: 0 2rem;
-            }
-
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .hero-left h1 {
-                font-size: 4.5rem;
-            }
-
-            .hero-right {
-                height: 400px;
-            }
-
-            .nav-bar {
-                bottom: 2rem;
-                padding: 1rem 2rem;
-                gap: 2rem;
-            }
-
-            .projects-bento {
-                grid-template-columns: 1fr;
-            }
-
-            .project-cell {
-                grid-column: span 1;
-            }
-
-            .about-section {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-
-            .hero-section {
-                margin: 1.5rem 0;
-                min-height: 80vh;
-            }
-
-            .hero-left h1 {
-                font-size: 3rem;
-                letter-spacing: -3px;
-            }
-
-            .hero-right {
-                height: 300px;
-            }
-
-            .status-badge {
-                top: 1rem;
-                right: 1rem;
-                padding: 0.5rem 1rem;
-                font-size: 0.65rem;
-            }
-
-            .center-image {
-                width: 250px;
-                height: 250px;
-            }
-
-            .nav-bar {
-                bottom: 1.5rem;
-                padding: 1rem 1.5rem;
-                gap: 1.5rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .nav-bar a {
-                font-size: 0.75rem;
-            }
-
-            .project-cell,
-            .about-cell,
-            .contact-cell {
-                padding: 2rem;
-            }
-
-            .contact-cell a {
-                font-size: 1.1rem;
-            }
-
-            .about-text {
-                font-size: 1.1rem;
-            }
-        }
-    </style>
+    a:hover { color: #eee; }
+
+    .gear-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: #555;
+      background: none;
+      border: none;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 300;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.2s;
+    }
+
+    .gear-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    .gear-btn:hover { color: #eee; }
+
+    .quote-block {
+      border-top: 1px solid #222;
+      padding-top: 1.6rem;
+    }
+
+    .quote {
+      font-style: italic;
+      font-size: 15px;
+      color: #666;
+      line-height: 1.7;
+      min-height: 1.5em;
+      transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.4s ease;
+      display: inline-block;
+      cursor: default;
+      transform-origin: left center;
+      will-change: transform;
+    }
+
+    .quote:hover { transform: scale(1.05); color: #999; }
+    .quote.hidden { opacity: 0; }
+
+    .card > * {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    h1           { animation-delay: 0.1s; }
+    .role        { animation-delay: 0.2s; }
+    p            { animation-delay: 0.3s; }
+    .links       { animation-delay: 0.4s; }
+    .quote-block { animation-delay: 0.5s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 100;
+    }
+
+    .overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal {
+      background: #181818;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 2rem 2.2rem;
+      width: 100%;
+      max-width: 380px;
+      transform: translateY(16px) scale(0.97);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .overlay.open .modal {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.6rem;
+    }
+
+    .modal-title {
+      font-size: 15px;
+      font-weight: 400;
+      color: #eee;
+      letter-spacing: 0.01em;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: #555;
+      cursor: pointer;
+      padding: 2px;
+      line-height: 1;
+      transition: color 0.2s;
+      font-size: 20px;
+    }
+
+    .close-btn:hover { color: #eee; }
+
+    .gear-section {
+      margin-bottom: 1.4rem;
+    }
+
+    .gear-section:last-child { margin-bottom: 0; }
+
+    .gear-section-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 0.7rem;
+    }
+
+    .gear-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid #222;
+      font-size: 14px;
+    }
+
+    .gear-item:last-child { border-bottom: none; }
+
+    .gear-name { color: #aaa; }
+    .gear-value { color: #555; font-size: 13px; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Hero Section -->
-        <div class="hero-section">
-            <div class="hero-container">
-                <div class="hero-left">
-                    <h1>
-                        <span>hello!</span>
-                        <span>I'm</span>
-                        <span>Bharath.</span>
-                    </h1>
-                    <p class="tagline">Self-taught Graphic Designer & Tech Enthusiast.</p>
-                                    <div class="contact-cell">
-                    <a href="https://youtube.com/@bharathsyamanthak">VISIT YOUTUBE</a>
-                </div>
-                    <div class="hero-info">
-                    </div>
-                </div>
+  <div class="card">
+    <h1><strong>hi,</strong> I'm Bharath.</h1>
+    <div class="role">self-taught graphic designer.</div>
+    <p>i'm a 17 year old tech enthusiast & graphic designer based in thiruvananthapuram.</p>
 
-                <div class="hero-right">
-                    <div class="visual-box"></div>
-                    <div class="visual-box"></div>
-                    <div class="visual-box"></div>
-                    <div class="center-image">
-                        <!-- Add your image here -->
-                    <img src="main.jpg" alt="Profile">
-                    </div>
-                    <div class="status-badge">
-                        <span class="pulse-dot"></span>
-                        <span>Dreaming</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Projects Section
-        <section class="projects-section" id="work">
-            <div class="section-header">
-                <h2>Selected Work</h2>
-            </div>
-
-           <div class="projects-bento">
-                <div class="project-cell">
-                    <span class="project-number">01</span>
-                    <h3>Placeholder Project 1</h3>
-                    <p>Lorem Ipsum</p>
-                    <div class="project-tags">
-                        <span class="tag">2024</span>
-                        <span class="tag">Product Design</span>
-                        <span class="tag">Mobile</span>
-                    </div>
-                </div>
-
-                <div class="project-cell">
-                    <span class="project-number">02</span>
-                    <h3>Placeholder Project 2</h3>
-                    <p>Lorem Ipsum</p>
-                    <div class="project-tags">
-                        <span class="tag">2024</span>
-                        <span class="tag">Web Design</span>
-                        <span class="tag">Development</span>
-                    </div>
-                </div>
-
-                <div class="project-cell">
-                    <span class="project-number">03</span>
-                    <h3>Placeholder Project 3</h3>
-                    <p>Lorem Ipsum</p>
-                    <div class="project-tags">
-                        <span class="tag">2023</span>
-                        <span class="tag">Development</span>
-                        <span class="tag">React</span>
-                    </div>
-                </div>
-
-                <div class="project-cell">
-                    <span class="project-number">04</span>
-                    <h3>Placeholder Project 4</h3>
-                    <p>Lorem Ipsum</p>
-                    <div class="project-tags">
-                        <span class="tag">2023</span>
-                        <span class="tag">Branding</span>
-                        <span class="tag">Print</span>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-
-
-        <section class="about-section" id="about">
-            <div class="about-cell">
-                <h2>About</h2>
-                <p class="about-text">I'm a Self-taught Graphic Designer & Tech Enthusiast with more than 4 years of Photoshop Experience. I also own a tech channel on YouTube where I occasionally post videos.</p>
-            </div>
-
-            <div class="about-cell">
-                <div class="details-list">
-                    <div class="detail-item">
-                        <h4>Location</h4>
-                        <p>Thiruvananthapuram, Kerala</p>
-                    </div>
-                    <div class="detail-item">
-                        <h4>E-mail</h4>
-                        <a href="mailto:contact@bharathsyamanthak.com">contact@bharathsyamanthak.com</a>
-                    </div>
-                    <div class="detail-item">
-                        <h4>Expertise</h4>
-                        <p>Posters, Thumbnails and other graphics.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="contact-section" id="contact">
-            <div class="section-header">
-                <h2>Get in Touch</h2>
-            </div>
-
-            <div class="contact-grid">
-                <div class="contact-cell">
-                    <a href="https://youtube.com/@bharathsyamanthak">Personal YouTube</a>
-                </div>
-                <div class="contact-cell">
-                    <a href="https://youtube.com/techpointch">Tech YouTube</a>
-                </div>
-                <div class="contact-cell">
-                    <a href="https://instagram.com/srcleak">Instagram</a>
-                </div>
-                <div class="contact-cell">
-                    <a href="mailto:contact@bharathsyamanthak.com">Email</a>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            © 2026 Bharath Syamanthak
-        </footer>
+    <div class="links">
+      <a href="https://youtube.com/techpointch">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+  <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/></svg>
+        youtube
+      </a>
+      <a href="https://instagram.com/srcleak">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg>
+        insta
+      </a>
+      <button class="gear-btn" onclick="openGear()">
+        <svg viewBox="0 0 24 24"><path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.92c.04-.34.07-.69.07-1.08s-.03-.74-.07-1.08l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.34-.07.69-.07 1.08s.03.74.07 1.08l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.58 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65z"/></svg>
+        My Gear
+      </button>
+            <a href="mailto:contact@bharathsyamanthak.com">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"/></svg>
+        contact@bharathsyamanthak.com
+      </a>
     </div>
+
+    <div class="quote-block">
+      <div class="quote hidden" id="quote">—</div>
+    </div>
+  </div>
+  <div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <span class="modal-title">my gear</span>
+        <button class="close-btn" onclick="closeGear()">×</button>
+      </div>
+
+      <div class="gear-section">
+        <div class="gear-section-label">pc (custom build)</div>
+        <div class="gear-item"><span class="gear-name">motherboard</span><span class="gear-value">MSI B650M Bomber WiFi</span></div>
+        <div class="gear-item"><span class="gear-name">cpu</span><span class="gear-value">AMD Ryzen 5 7600X (6 cores, 12 threads)</span></div>
+        <div class="gear-item"><span class="gear-name">gpu</span><span class="gear-value">MSI GeForce RTX 4060 Ventus 2X (OC)</span></div>
+        <div class="gear-item"><span class="gear-name">ram</span><span class="gear-value">32GB G.Skill Ripjaws S5 (DDR5, Single Stick)</span></div>
+        <div class="gear-item"><span class="gear-name">storage</span><span class="gear-value">1TB Crucial P3 Plus NVME</span></div>
+        <div class="gear-item"><span class="gear-name">aio</span><span class="gear-value">Ant Esports ICE-240 Liquid Cooler (AIO)</span></div>
+        <div class="gear-item"><span class="gear-name">psu</span><span class="gear-value">Cooler Master Bronze 750W</span></div>
+        <div class="gear-item"><span class="gear-name">cabinet</span><span class="gear-value">MSI MAG Forge 320R</span></div>
+      </div>
+
+      <div class="gear-section">
+        <div class="gear-section-label">input & display</div>
+        <div class="gear-item"><span class="gear-name">monitor</span><span class="gear-value">Samsung Odyssey G3 (180hz)</span></div>
+        <div class="gear-item"><span class="gear-name">keyboard</span><span class="gear-value">Zebronics Zeb-Max Ninja 61 keys</span></div>
+        <div class="gear-item"><span class="gear-name">mouse</span><span class="gear-value">ASUS TUF Gaming M3</span></div>
+      </div>
+
+      <div class="gear-section">
+        <div class="gear-section-label">audio input/output</div>
+        <div class="gear-item"><span class="gear-name">speakers</span><span class="gear-value">Creative Pebble Plus 2.1</span></div>
+        <div class="gear-item"><span class="gear-name">earbuds</span><span class="gear-value">CMF by Nothing Buds Pro (2)</span></div>
+        <div class="gear-item"><span class="gear-name">microphone</span><span class="gear-value">HyperX SoloCast</span></div>
+      </div>
+      <div class="gear-section">
+        <div class="gear-section-label">other equipment</div>
+        <div class="gear-item"><span class="gear-name">phone</span><span class="gear-value">Nothing Phone (3a) Pro (12, 256)</span></div>
+        <div class="gear-item"><span class="gear-name">laptop</span><span class="gear-value">ASUS Vivobook M415 (8, 256)</span></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    fetch('motd.txt')
+      .then(r => r.text())
+      .then(text => {
+        const quotes = text.split('\n').map(q => q.trim()).filter(Boolean);
+        const pick = quotes[Math.floor(Math.random() * quotes.length)];
+        const el = document.getElementById('quote');
+        el.textContent = `"${pick}"`;
+        el.classList.remove('hidden');
+      })
+      .catch(() => { document.getElementById('quote').textContent = ''; });
+
+    function openGear() {
+      document.getElementById('overlay').classList.add('open');
+    }
+
+    function closeGear() {
+      document.getElementById('overlay').classList.remove('open');
+    }
+
+    function handleOverlayClick(e) {
+      if (e.target === document.getElementById('overlay')) closeGear();
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeGear();
+    });
+  </script>
 </body>
 </html>
